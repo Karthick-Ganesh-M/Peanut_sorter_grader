@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ</title>
+  <style>
+    body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+  justify-content: space-between;
+}
+
+.faq-column {
+  max-width: 50%;
+  width: 100%;
+  margin: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.faq-heading {
+  background-color: #3498db;
+  color: #fff;
+  text-align: center;
+  padding: 15px;
+  font-size: 24px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e0e0e0;
+  overflow: hidden;
+  position: relative;
+}
+
+.faq-question,
+.faq-answer {
+  padding: 20px;
+}
+
+.faq-question {
+  background-color: #3498db;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question:hover {
+  background-color: #2980b9;
+}
+
+.faq-answer {
+  display: none;
+  background-color: #fff;
+  color: #333;
+  line-height: 1.6;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+  padding: 0 20px;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+  max-height: 500px;
+  opacity: 1;
+}
+
+.faq-answer p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-toggle {
+  font-size: 24px;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px;
+  font-family: sans-serif;
+  font-size: 30px;
+}
+.main{
+  display:flex;
+}
+/* Media query for mobile view */
+@media (max-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .main{
+    display:block;
+  }
+  .faq-column {
+    max-width: 100%;
+    margin: 10px 0;
+  }
+
+  .faq-item {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .faq-question {
+    font-size: 18px;
+    padding: 10px;
+  }
+
+  .faq-answer {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .faq-toggle {
+    font-size: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin: 10px;
+  }
+
+  
+  .faq-column {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+  </style>
+</head>
+<body>
+<h1> FAQs</h1>
+
+    <div class="main">
+        <div class="faq-column">
+        <!-- <div class="faq-heading"> AQI</div>. -->
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(1)">
+            <span class="faq-number">1</span>
+            Is peanut butter good for diabetics??
+            <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer" id="answer1"> Peanuts and peanut butter help to reduce spikes in blood sugar, and may improve long-term glucose control throughout  the day. Peanuts also help keep you fuller, longer.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(2)">
+            <span class="faq-number">2</span>
+            Do peanuts increase cholesterol?
+            <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer" id="answer2">No. Peanuts contain 0 cholesterol, and can actually lower high levels of LDL, or “bad,” cholesterol. High LDL cholesterol can lead to atherosclerosis—fatty deposits that build up inside your arteries.Fortunately, different components of peanuts include healthy oils, protein, and fiber, which can all help reduce cholesterol.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(3)">
+            <span class="faq-number">3</span>
+            Are peanuts good for high blood pressure?
+            <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer" id="answer3">Yes, studies show  that eating peanuts regularly helps decrease blood pressure, even among individuals with high blood pressure: One study found that “participants with elevated blood pressure at baseline had significant decreases in diastolic blood pressure” after peanut consumption.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(4)">
+            <span class="faq-number">4</span>
+            Can peanut sorting machines handle different peanut varieties?
+            <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer" id="answer4"> Yes, modern peanut sorting machines are designed to handle various peanut varieties effectively. They can be adjusted to accommodate different sizes, shapes, and colors of peanuts</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(5)">
+            <span class="faq-number">5</span>
+            What is peanut sorting?
+            <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer" id="answer5">Peanut sorting is the process of separating peanuts based on various attributes such as size, color, shape, and defects. It ensures that only high-quality peanuts meeting specific standards are packed for consumption or further processing.</div>
+        </div>
+        </div>
+
+        <div class="faq-column">
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(6)">
+            <span class="faq-number">6</span>
+            Does peanut sorting affect the nutritional value of peanuts?
+            <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer" id="answer6">No, peanut sorting does not significantly affect the nutritional value of peanuts. It primarily focuses on removing physical defects and contaminants while preserving the inherent nutritional content of the peanuts.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(7)">
+            <span class="faq-number">7</span>
+            Are there regulations governing peanut sorting?
+            <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer" id="answer7">Depending on the region, there may be regulations or industry standards governing peanut sorting practices to ensure food safety and quality standards are met.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(8)">
+            <span class="faq-number">8</span>
+            What are the nutritional benefits of peanuts?
+            <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer" id="answer8">Peanuts are a good source of protein, fiber, healthy fats</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(9)">
+            <span class="faq-number">9</span>
+            Are peanuts nuts or legumes?
+            <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer" id="answer9">Despite the name, peanuts are technically legumes, belonging to the same family as beans and lentils. However, they share similar nutritional characteristics with tree nuts and are often treated as such in culinary contexts and allergy considerations</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(10)">
+            <span class="faq-number">10</span>
+            How common is peanut allergy?
+            <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer" id="answer10">Peanut allergy is one of the most common food allergies, especially among children. Its prevalence has been increasing in recent years, affecting approximately 1-2% of the population</div>
+        </div>
+        </div>
+    </div>
+
+<script>
+  function toggleAnswer(questionNumber) {
+    var answerId = 'answer' + questionNumber;
+    var answerElement = document.getElementById(answerId);
+    var faqItem = answerElement.parentElement;
+
+    if (faqItem.classList.contains('active')) {
+      faqItem.classList.remove('active');
+      answerElement.style.display = 'none';
+    } else {
+      faqItem.classList.add('active');
+      answerElement.style.display = 'block';
+    }
+  }
+</script>
+
+</body>
+</html>

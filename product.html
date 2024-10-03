@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peanut </title>
+  <link rel="stylesheet" href="assets\css\styles.css">
+  <style>
+    * {box-sizing: border-box;}
+
+    .img-zoom-container {
+      position: relative;
+    }
+
+    .img-zoom-lens {
+      position: absolute;
+      border: 1px solid #d4d4d4;
+      width: 60px;
+      height: 60px;
+    }
+    .img-zoom-lens:hover {
+      display:block;
+    }
+    .img-zoom-result {
+      border: 1px solid #d4d4d4;
+      display:inline-block;
+      width: 300px;
+      height: 240px;
+    }
+    
+</style>
+<!--
+<script>
+function imageZoom(imgID, resultID) {
+  var img = document.getElementById(imgID);
+  var result = document.getElementById(resultID);
+  var lens = document.createElement("DIV");
+  lens.setAttribute("class", "img-zoom-lens");
+  img.parentElement.insertBefore(lens, img);
+  var cx = result.offsetWidth / lens.offsetWidth;
+  var cy = result.offsetHeight / lens.offsetHeight;
+  result.style.backgroundImage = "url('" + img.src + "')";
+  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+  lens.addEventListener("mousemove", moveLens);
+  img.addEventListener("mousemove", moveLens);
+  lens.addEventListener("touchmove", moveLens);
+  img.addEventListener("touchmove", moveLens);
+  function moveLens(e) {
+    e.preventDefault();
+    var pos = getCursorPos(e);
+    var x = pos.x - (lens.offsetWidth / 2);
+    var y = pos.y - (lens.offsetHeight / 2);
+    if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+    if (x < 0) {x = 0;}
+    if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+    if (y < 0) {y = 0;}
+    lens.style.left = x + "px";
+    lens.style.top = y + "px";
+    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+  }
+  function getCursorPos(e) {
+    var a = img.getBoundingClientRect();
+    var x = e.pageX - a.left - window.pageXOffset;
+    var y = e.pageY - a.top - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
+</script>
+-->
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <img src="assets\img\logo2.png">
+    </div>
+
+    <div class="menu-icon" onclick="toggleNav()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
+    <div class="nav-links" id ="nav-links">
+      <a href="index.html">Home</a>
+      <a href="product.html">Product</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="login.html">Login/Signup</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+  </nav>
+
+  <script >
+    function toggleNav() {
+      var navLinks = document.getElementById("nav-links");
+      navLinks.classList.toggle("show-nav");
+    }
+  </script>
+
+<!--
+   <div class="img-zoom-container">
+    <img id="myimage" src="assets\img\peanut.png" width="300" height="240">
+    <div id="myresult" class="img-zoom-result"></div>
+  <div class="peanut-container">
+-->
+
+  <div class="peanut">
+    <div class="peanut-image">
+      <img src="assets\img\runner.jpg" alt="Virginia Peanuts">
+    </div>
+    <div class="peanut-text">
+      <h2>Runner Peanuts</h2>
+      <p>Runner peanuts, characterized by their uniform size and shape, are renowned for their versatility and widespread use in various culinary applications. With a slightly smaller size compared to other varieties, Runner peanuts are particularly favored for their suitability in processing, making them an ideal choice for producing creamy peanut butter and flavorful roasted snacks. Their consistent shape facilitates efficient processing, ensuring uniformity in the final products. Cultivated primarily in the southeastern United States, Runner peanuts are a staple ingredient in numerous food products, including snacks, confections, and peanut butter spreads. Their mild yet distinct flavor profile and crunchy texture make them a popular choice for consumers seeking the classic peanut taste in their favorite treats. Whether enjoyed as a spread on toast, blended into sauces, or simply roasted for snacking.</p>
+    </div>
+  </div>
+
+  <div class="peanut">
+    <div class="peanut-image">
+      <img src="assets\img\virginia.png" alt="Virginia Peanuts">
+    </div>
+    <div class="peanut-text">
+      <h2>Virginia Peanuts</h2>
+      <p>Virginia peanuts, recognized for their large size and robust flavor, are esteemed for their superior quality and versatility in culinary applications. These peanuts are commonly used in gourmet snacks, peanut butter, and confections, where their bold crunch and rich taste shine through. Cultivated primarily in Virginia and the Carolinas in the United States, Virginia peanuts are favored by snack enthusiasts and chefs alike for their exceptional quality and texture. With their larger size and hearty kernel, Virginia peanuts offer a satisfying crunch that pairs perfectly with a variety of flavors. Whether enjoyed roasted, salted, or incorporated into gourmet dishes, Virginia peanuts continue to be a beloved choice for those seeking a premium peanut experience.</p>
+    </div>
+  </div>
+
+  <div class="peanut">
+     <div class="peanut-image">
+      <img src="assets\img\spanish.jpeg" alt="Spanish Peanuts">
+    </div>
+
+    <div class="peanut-text">
+      <h2>Spanish Peanuts</h2>
+      <p>Spanish peanuts, distinguished by their smaller size and reddish-brown skin, offer a unique flavor profile that sets them apart in the culinary world. These peanuts are commonly used in a variety of culinary applications, particularly in the creation of peanut candies and snack mixes. With a slightly sweeter taste compared to other varieties, Spanish peanuts add depth and richness to confections, enhancing their overall flavor. Cultivated in regions across the southern United States, South America, and Africa, Spanish peanuts are prized for their versatility and ability to elevate the taste of both sweet and savory dishes. Whether enjoyed on their own as a crunchy snack or incorporated into recipes for a burst of nutty goodness, Spanish peanuts are a cherished ingredient that adds a delightful dimension to culinary creations.</p>
+    </div>
+  </div>
+
+  <div class="peanut">
+    <div class="peanut-image">
+      <img src="assets\img\valencian.jpg" alt="Valencia Peanuts">
+    </div>
+    <div class="peanut-text">
+      <h2>Valencia Peanuts</h2>
+      <p>
+Valencia peanuts, celebrated for their small size and sweet flavor, are a delightful variety cherished in the culinary world for their distinct taste and versatility. These peanuts, cultivated predominantly in the southern United States, boast a delicate sweetness that makes them ideal for use in boiled peanut snacks, peanut butter, and confections. With their smaller size compared to other varieties, Valencia peanuts offer a unique texture and flavor profile that adds depth to a wide range of dishes. Whether enjoyed as a wholesome snack, blended into creamy peanut butter, or used to add a touch of sweetness to desserts, Valencia peanuts remain a beloved choice for those seeking a flavorful peanut experience.</p>
+    </div>
+  </div>
+</div>
+    
+  <script>
+    imageZoom("myimage", "myresult");
+  </script>
+</body>
+</html>

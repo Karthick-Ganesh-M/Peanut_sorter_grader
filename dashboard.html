@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peanut Sorter Dashboard</title>
+    <link rel="stylesheet" href="assets\css\dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <div class="menu-icon" onclick="toggleNavMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <nav class="nav-menu" id="navMenu">
+                <a href="realtime.html">Realtime data</a>
+                <a href="prediction.html">prediction</a>
+                <a href="suggestion.html">Suggestion</a>
+            </nav>
+
+            <div class="left-section">
+                <h1>Dashboard</h1>
+            </div>
+            <div class="right-section">
+                <div class="user-profile" onclick="toggleLogoutMenu()">
+                    <img src="assets\img\user.png" alt="User Icon">
+                    <div class="logout-menu" id="logoutMenu">
+                        <a href="#">Profile</a>
+                        <a href="index.html">Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h2>Shift Selection</h2>
+                <select id="shiftSelect">
+                    <option value="1">Shift 1</option>
+                    <option value="2">Shift 2</option>
+                    <option value="3">Shift 3</option>
+                </select>
+                
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="col">
+                <h2>Summary</h2>
+                <div id="summaryContent" style="margin-left:10px">
+                    <!-- Summary content will be populated dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <h2>Shift Data</h2>
+                <table id="shiftTable">
+                    <thead>
+                        <tr>
+                            <th>Row</th>
+                            <th>In Quantity</th>
+                            <th>Outcomes</th>
+                            <th>Wastage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table rows will be populated dynamically -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="col">
+                <h2>Bar Chart</h2>
+                <div class="chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Peanut Sorter and Grader </p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

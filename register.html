@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Register</title>
+    <style>
+        body {
+            background-color:#0066ff;
+        }
+
+        .container {
+            margin-top: 100px;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .btn-register {
+            width: 100%;
+            background-color: #007bff;
+        }
+
+        .btn-register:hover {
+            background-color: #218838;
+            border-color: #218838;
+        }
+
+        .text-center {
+            margin-top: 20px;
+        }
+
+        .hide {
+            display: none;
+        }
+        
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin:20px 0px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .register {
+            width: 40%;
+            margin-left: 30%;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 72%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #aaa;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin-top: 100px;
+            }
+            
+            .form-container {
+                padding: 20px;
+                width:250px;
+            }
+            
+            .remember-forgot {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .register {
+                width: 40%;
+                margin-left: 15%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">    
+    <div class="row">
+        <div class="col-sm-6 col-sm-offset-3 register" >
+            <div class="form-container" id="registrationContainer">
+                <h2 class="text-center" id="register_title">Register</h2>
+                <form name="registration_form" method="post" action="#" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" name="email" id="email" class="form-control" placeholder="Enter your email">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password">
+                        <i class="glyphicon glyphicon-eye-open toggle-password" id="togglePassword"></i>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm_password">Re-enter Password</label>
+                        <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Re-enter your password">
+                        <i class="glyphicon glyphicon-eye-open toggle-password" id="toggleConfirmPassword"></i>
+                    </div>
+
+                    <div class="remember-forgot">
+                        <div class="remember-me">
+                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <label for="rememberMe" style="margin-bottom:0px;">Remember Me</label>
+                        </div>
+                    </div>
+                    <button type="button" id="register" name="register" class="btn btn-register">Register</button>
+                </form>
+                <p class="text-center">Already have an account? <a href="login.html">Login</a></p>
+            </div>
+        </div><!-- end col -->
+    </div><!--  end row -->     
+</div>
+
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js";
+  
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+        apiKey: "AIzaSyChuFtAkYGjb95ML22dCVwu4dwfqIEvLSs",
+        authDomain: "login-auth-ee70f.firebaseapp.com",
+        projectId: "login-auth-ee70f",
+        storageBucket: "login-auth-ee70f.appspot.com",
+        messagingSenderId: "586407299042",
+        appId: "1:586407299042:web:8e4532ba35db96036a5bbb",
+        measurementId: "G-X757KPCXSS"
+      };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+
+    // New Registration code
+    document.getElementById("register").addEventListener("click", function() {
+        var email =  document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        //For new registration
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            console.log(user);
+            alert("Registration successfully!!");
+        })
+        .catch((error) => {
+            const errorMessage = error.message;
+            console.log(errorMessage);
+            alert(errorMessage);
+        });                   
+    });
+
+    // Toggle password visibility
+    document.getElementById("togglePassword").addEventListener("click", function () {
+        const passwordInput = document.getElementById("password");
+        const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+        passwordInput.setAttribute("type", type);
+
+        // Toggle the icon
+        this.classList.toggle("glyphicon-eye-open");
+        this.classList.toggle("glyphicon-eye-close");
+    });
+
+    document.getElementById("toggleConfirmPassword").addEventListener("click", function () {
+        const confirmPasswordInput = document.getElementById("confirm_password");
+        const type = confirmPasswordInput.getAttribute("type") === "password" ? "text" : "password";
+        confirmPasswordInput.setAttribute("type", type);
+
+        // Toggle the icon
+        this.classList.toggle("glyphicon-eye-open");
+        this.classList.toggle("glyphicon-eye-close");
+    });
+</script>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peanut Project - Wastage Outcomes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 80%;
+            margin-bottom: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #e0e4f8;
+            padding: 8px;
+            text-align: center; /* Center aligning the content */
+        }
+        th {
+            background-color: #f8f9fa;
+            height: 40px;
+        }
+        .suggestions {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+        .suggestions li {
+            margin-bottom: 10px;
+        }
+        .detected {
+            color: red; /* Setting the color to red */
+        }
+        @media (max-width: 600px) {
+            .container {
+                width:90%;
+            }
+            th, td {
+                padding: 8px;
+            }
+        }
+        header{
+            width:100%;
+            background-color: #333;
+            height:80px;
+            margin-bottom:30px;
+        }
+        header h1{
+            color:white;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1>Suggestion</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1>Wastage Outcomes</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Serial Number</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Wastage</th>
+                    <th>Reason</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2024-06-10</td>
+                    <td>08:00</td>
+                    <td class="detected">Detected</td>
+                    <td>Damaged Peanut</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>2024-06-11</td>
+                    <td>12:30</td>
+                    <td class="detected">Detected</td>
+                    <td>Overripe peanuts</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>2024-06-12</td>
+                    <td>09:45</td>
+                    <td class="detected">Detected</td>
+                    <td>Damaged Peanut</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>2024-06-13</td>
+                    <td>14:20</td>
+                    <td class="detected">Detected</td>
+                    <td>Black Peanut</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>2024-06-14</td>
+                    <td>07:20</td>
+                    <td class="detected">Detected</td>
+                    <td>Overripe peanuts</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>2024-06-15</td>
+                    <td>17:20</td>
+                    <td class="detected">Detected</td>
+                    <td>Black Peanuts</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>Suggestions</h2>
+        <ul class="suggestions">
+            <li>Ensure proper handling during transport to reduce damage.</li>
+            <li>Harvest peanuts at the right time to avoid overripe wastage.</li>
+            <li>Peanuts may be subjected to rough handling during transportation, leading to physical damage such as crushing, bruising, or cracking.</li>
+            <li>Regularly maintain and check processing equipment to avoid errors.</li>
+        </ul>
+    </div>
+</body>
+</html>

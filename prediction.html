@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peanut Project - Prediction Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 900px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        .grade {
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #e0e4f8;
+            border-radius: 8px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .column {
+            flex: 1;
+            padding: 0 10px;
+        }
+        .column div {
+            margin-bottom: 10px;
+        }
+        .label {
+            font-weight: bold;
+            color: #333;
+        }
+        h2 {
+            color: #ffffff;
+        }
+        .grade:nth-child(1) {
+            background-color: #1aff1a;
+        }
+        .grade:nth-child(2) {
+            background-color: #ffff1a;
+        }
+        .grade:nth-child(3) {
+            background-color: #ff3333;
+        }
+        .chart-container {
+            background: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            width: 48%;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        .chart-container canvas {
+            height: 300px; /* Adjusted height for the charts */
+        }
+        .chart-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .value {
+            margin-left: 30px;
+        }
+        .chart-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 900px;
+            gap: 4%; /* Added space between charts */
+        }
+        /* Add media queries for mobile view */
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .column {
+                padding: 5px 0;
+            }
+            .label, .value {
+                display: inline-block;
+                margin-right: 10px;
+            }
+            .chart-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .chart-container {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+           
+        }
+        header {
+            width: 100%;
+            background-color: #333;
+            height: 80px;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            color: white;
+            text-align: center;
+            margin: 0;
+            line-height: 80px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1>Prediction</h1>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="grade">
+            <div class="row">
+                <div class="column">
+                    <h2>Grade 1</h2>
+                </div>
+                <div class="column">
+                    <div class="label">Peanut in KG:</div>
+                    <div class="value" id="grade1-peanut">8 KG</div>
+                </div>
+                <div class="column">
+                    <div class="label">Market Price:</div>
+                    <div class="value" id="grade1-price">Rs.1440</div>
+                </div>
+                <div class="column">
+                    <div class="label">Predicted Oil:</div>
+                    <div class="value" id="grade1-oil">3.6 litres</div>
+                </div>
+            </div>
+        </div>
+        <div class="grade">
+            <div class="row">
+                <div class="column">
+                    <h2>Grade 2</h2>
+                </div>
+                <div class="column">
+                    <div class="label">Peanut in KG:</div>
+                    <div class="value" id="grade2-peanut">5 KG</div>
+                </div>
+                <div class="column">
+                    <div class="label">Market Price:</div>
+                    <div class="value" id="grade2-price">Rs.850</div>
+                </div>
+                <div class="column">
+                    <div class="label">Predicted Oil:</div>
+                    <div class="value" id="grade2-oil">1.75 litres</div>
+                </div>
+            </div>
+        </div>
+        <div class="grade">
+            <div class="row">
+                <div class="column">
+                    <h2>Grade 3</h2>
+                </div>
+                <div class="column">
+                    <div class="label">Peanut in KG:</div>
+                    <div class="value" id="grade3-peanut">2 KG</div>
+                </div>
+                <div class="column">
+                    <div class="label">Market Price:</div>
+                    <div class="value" id="grade3-price">Rs.320</div>
+                </div>
+                <div class="column">
+                    <div class="label">Predicted Oil:</div>
+                    <div class="value" id="grade3-oil">600 ml</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="chart-row">
+        <div class="chart-container">
+            <div class="chart-title">Peanut KG Distribution</div>
+            <canvas id="peanutChart" height="300"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-title">Market Price</div>
+            <canvas id="priceChart" height="300"></canvas>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gradeData = [
+                {
+                    grade: 'Grade 1',
+                    peanut: 8,
+                    price: 1440,
+                    oil: 3.6
+                },
+                {
+                    grade: 'Grade 2',
+                    peanut: 5,
+                    price: 850,
+                    oil: 1.75
+                },
+                {
+                    grade: 'Grade 3',
+                    peanut: 2,
+                    price: 320,
+                    oil: 0.6
+                }
+            ];
+
+            function createPieChart(ctx, data, labels, backgroundColors) {
+                return new Chart(ctx, {
+                    type: 'pie',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: data,
+                            backgroundColor: backgroundColors
+                        }]
+                    },
+                    options: {
+                        rotation: -Math.PI / 2, // Start the chart from the top (clockwise direction)
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'bottom'
+                            }
+                        }
+                    }
+                });
+            }
+
+            function createBarChart(ctx, label, data, backgroundColor) {
+                return new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Grade 1', 'Grade 2', 'Grade 3'],
+                        datasets: [{
+                            label: label,
+                            data: data,
+                            backgroundColor: backgroundColor,
+                            borderColor: backgroundColor,
+                            fill: false
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            }
+
+            const peanutData = gradeData.map(item => item.peanut);
+            const priceData = gradeData.map(item => item.price);
+
+            const peanutCtx = document.getElementById('peanutChart').getContext('2d');
+            const priceCtx = document.getElementById('priceChart').getContext('2d');
+
+            createPieChart(peanutCtx, peanutData, ['Grade 1', 'Grade 2', 'Grade 3'], [
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(255, 99, 132, 0.6)'
+            ]);
+            createBarChart(priceCtx, 'Market Price', priceData, [
+                'rgba(54, 162, 235, 0.6)',
+                'rgba(75, 192, 192, 0.6)',
+                'rgba(255, 99, 132, 0.6)'
+            ]);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weight Display</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('https://thumbor.forbes.com/thumbor/fit-in/1200x0/filters:format(jpg)/https://specials-images.forbesimg.com/imageserve/5e9dc649f0b8cf0006294fbe/0x0.jpg') no-repeat center center fixed; /* Replace with your background image URL */
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); 
+      z-index: -1;
+    }
+    .container {
+      padding: 50px;
+      background-color: white; 
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 80%;
+      max-width: 800px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1; 
+    }
+    .box {
+      text-align: center;
+      padding: 30px;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .weight {
+      font-size: 2em;
+      margin-top: 10px;
+    }
+    h2 {
+      font-size: 1.8em;
+      margin: 0;
+      color: green;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+      width: 100%;
+      margin-top: 20px;
+    }
+    .box {
+      flex: 1;
+    }
+    header {
+      width: 100%;
+      background-color: #333; 
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 2; 
+    }
+    header h1 {
+      color: white;
+      font-size: 2em;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 30px;
+        margin-top:120px;
+        width:60%; 
+      }
+      .box {
+        padding: 20px;
+      }
+      .weight {
+        font-size: 1.5em; 
+      }
+      h2 {
+        font-size: 1.5em; 
+      }
+      .row {
+        flex-direction: column; 
+        gap: 20px; 
+      }
+      .row .box {
+        flex: 1; 
+      }
+      header {
+        height: 60px;
+      }
+      header h1 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDQpq3z0drp_Ba1d7e1F6U-1O0-1tlWwgY",
+      authDomain: "peanutapp-10c6d.firebaseapp.com",
+      databaseURL: "https://peanutapp-10c6d-default-rtdb.firebaseio.com",
+      projectId: "peanutapp-10c6d",
+      storageBucket: "peanutapp-10c6d.appspot.com",
+      messagingSenderId: "280385116953",
+      appId: "1:280385116953:web:d5969c49554a2daff14388",
+      measurementId: "G-ZNZS89JN17"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const database = getDatabase(app);
+
+    function getWeightData() {
+      const weightRef = ref(database, '/demo');
+      onValue(weightRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          document.getElementById('intake').innerText = data.Intakeweight + ' g';
+          document.getElementById('weight1').innerText = data.weight1 + ' g';
+          document.getElementById('weight2').innerText = data.weight2 + ' g';
+          document.getElementById('weight3').innerText = data.weight3 + ' g';
+          
+        } else {
+          document.getElementById('intake').innerText = 'No data';
+          document.getElementById('weight1').innerText = 'No data';
+          document.getElementById('weight2').innerText = 'No data';
+          document.getElementById('weight3').innerText = 'No data';
+        }
+      });
+    }
+
+    window.onload = function() {
+      getWeightData();
+    };
+  </script>
+</head>
+<body>
+
+  <header>
+    <h1>Realtime Data</h1>
+  </header>
+
+  <div class="overlay"></div>
+
+
+  <div class="container">
+    <div class="box">
+      <h2>Intake Weight</h2>
+      <div class="weight" id="intake">Loading...</div>
+    </div>
+    <div class="row">
+      <div class="box">
+        <h2>Grade 1</h2>
+        <div class="weight" id="weight1">Loading...</div>
+      </div>
+      <div class="box">
+        <h2>Grade 2</h2>
+        <div class="weight" id="weight2">Loading...</div>
+      </div>
+      <div class="box">
+        <h2>Grade 3</h2>
+        <div class="weight" id="weight3">Loading...</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
